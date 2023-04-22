@@ -19,18 +19,18 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @RequiredArgsConstructor
-@Component
+//@Component
 public class AlfaCardParser {
 
 	private final CardRepository cardRepository;
 	private final DbInfoRepository dbInfoRepository;
 
 
-	@EventListener(ApplicationReadyEvent.class)
+	//@EventListener(ApplicationReadyEvent.class)
 	public void ParserAlfaCard() throws IOException {
 		Document doc = Jsoup.connect("https://alfabank.ru/get-money/credit-cards/").get();
 		Elements image = doc.getElementsByAttributeValue("class", "c1m2");
-		Elements oneElements = doc.getElementsByAttributeValue("class", "a30t f30t nG2m");
+		Elements oneElements = doc.getElementsByAttributeValue("class", "bfG2mw");
 		Elements urlElem = doc.getElementsByAttributeValue("class", "a1cA g1cA c1cA");
 		//System.out.println(oneElements.get(0).child(4));
 		for (int i=0; i<oneElements.size(); i++) {

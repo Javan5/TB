@@ -47,7 +47,7 @@ public class NewsParser {
 			news.setIcon(oneElements.get(i).select("source").get(1).attr("srcset"));
 			news.setText(oneElements.get(i).getElementsByAttributeValue("class", "list-item__title color-font-hover-only").text());
 			news.setUrl(oneElements.get(i).getElementsByAttributeValue("class", "list-item__title color-font-hover-only").attr("href"));
-			news.setCommentUrl(oneElements.get(i).select("img").attr("alt"));
+			news.setCommentUrlIcon(oneElements.get(i).select("img").attr("alt"));
 			news.setTypeNews(typeNews);
 			newsRepository.save(news);
 		}

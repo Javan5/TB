@@ -1,8 +1,9 @@
 package com.TB.TB.controller;
 
-import com.TB.TB.logic.logic.card.BuilderCard;
 import com.TB.TB.model.dto.CardDto;
+import com.TB.TB.model.dto.NewsDto;
 import com.TB.TB.service.card.api.CardService;
+import com.TB.TB.service.other.api.NewsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,46 +23,39 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/product/card")
-public class CardController {
-	private final CardService cardService;
-	private final BuilderCard builderCard;
+@RequestMapping("/news")
+public class NewsController {
+	private final NewsService newsService;
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces =
 			MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.CREATED)
-	public String create(@Validated @RequestBody CardDto dto) {
-		return cardService.create(dto);
+	public String create(@Validated @RequestBody NewsDto dto) {
+		return newsService.create(dto);
 	}
 
 	@GetMapping("/getall")
-	public List<CardDto> obtainAll() {
-		return cardService.obtainAll();
+	public List<NewsDto> obtainAll() {
+		return newsService.obtainAll();
 	}
 
-	@GetMapping("/{cardId}")
-	public CardDto getById(@PathVariable String cardId) {
-		return cardService.getById(cardId);
+	@GetMapping("/{newsid}")
+	public NewsDto getById(@PathVariable String newsid) {
+		return newsService.getById(newsid);
 	}
 
-	@PatchMapping("/{cardId}")
-	public void update(@PathVariable String cardId, @RequestBody CardDto dto) {
-		cardService.update(cardId, dto);
+	@PatchMapping("/{newsid}")
+	public void update(@PathVariable String newsid, @RequestBody NewsDto dto) {
+		newsService.update(newsid, dto);
 	}
 
-	@DeleteMapping("/{cardId}")
-	public void delete(@PathVariable String cardId) {
-		cardService.delete(cardId);
+	@DeleteMapping("/{newsid}")
+	public void delete(@PathVariable String newsid) {
+		newsService.delete(newsid);
 	}
 
 	@GetMapping("/search-by-name")
-	public List<CardDto> searchByName(@RequestParam String name){
-		return cardService.searchByName(name);
+	public List<NewsDto> searchByName(@RequestParam String name){
+		return newsService.searchByName(name);
 	}
-
-	@GetMapping("/{limit}/{period}")
-	public List<CardDto> getCardsByParam(@PathVariable int limit, @PathVariable int period) {
-		return builderCard.getCardByLimitAndPeriod(limit, period);
-	}
-
 }

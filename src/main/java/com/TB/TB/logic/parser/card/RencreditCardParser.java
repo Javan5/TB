@@ -1,3 +1,4 @@
+
 package com.TB.TB.logic.parser.card;
 
 import com.TB.TB.model.entity.card.Card;
@@ -22,7 +23,6 @@ public class RencreditCardParser {
 
 	private final CardRepository cardRepository;
 	private final DbInfoRepository dbInfoRepository;
-
 	@EventListener(ApplicationReadyEvent.class)
 	public void ParserRenceditCard() throws IOException {
 
@@ -30,7 +30,7 @@ public class RencreditCardParser {
 		Elements oneElements = doc.getElementsByAttributeValue("class", "card-detail__content");
 		Elements imageElements = doc.getElementsByAttributeValue("class", "card-detail__picture card-detail__picture--blue");
 		//Elements url = doc.getElementsByAttributeValue("class", "list__item card-detail__action card-detail__action--link");
-		Elements url = doc.getElementsByAttributeValue("class", "card-detail__button card-detail__button--link card-detail__button--gray link link_iconed");
+		Elements url = doc.getElementsByAttributeValue("class", "list__item card-detail__action card-detail__action--link");
 		for ( int i=0; i<2; i++)  //Две первые кредитные карты ренкредита
 		{
 			Element oneElement = oneElements.get(i);
@@ -50,7 +50,13 @@ public class RencreditCardParser {
 			rencr.setName(cardName.text());
 			rencr.setBank("Ренессанс кредит");
 			rencr.setIcon("https://rencredit.ru" + icon);
-			rencr.setUrlProduct("https://rencredit.ru" + url.get(i).attr("href"));
+			Element e = url.get(i);
+			String ew = url.get(i).select("a").attr("href");
+			//rencr.setUrlProduct("https://rencredit.ru" + url.get(i).attr("href"));
+			String urlProduct = url.get(i).select("a").attr("href");
+			urlProduct = (urlProduct == null || urlProduct.length() == 0) ? null : urlProduct.substring(0, urlProduct.length() - 1);
+
+			rencr.setUrlProduct(urlProduct);
 			cardRepository.save(rencr);
 		}
 		DbInfo dbInfo = new DbInfo();

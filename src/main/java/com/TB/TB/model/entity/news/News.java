@@ -34,9 +34,9 @@ public class News {
 	@Comment("Ссылка на новость")
 	private String url;
 
-	@Column(name = "COMMENT_URL_NEWS")
+	@Column(name = "COMMENT_URL_ICON_NEWS")
 	@Comment("Комментарий картинки")
-	private String commentUrl;
+	private String commentUrlIcon;
 
 	@Column(name = "TYPE_NEWS")
 	@Comment("Тип новости")
