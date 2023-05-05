@@ -7,4 +7,8 @@ import java.util.List;
 
 public interface BuilderLoan {
 	List<LoanDto> getCardByLimitAndPeriod(int summ, int period, TypeLoan typeLoan);
+
+	boolean addNewLoanUser(String id);
+
+	List<LoanDto> getLoanForUser();
 }

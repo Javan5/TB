@@ -64,4 +64,9 @@ public class CardController {
 		return builderCard.getCardByLimitAndPeriod(limit, period);
 	}
 
+	@GetMapping("/addcard/{cardId}")
+	public boolean addCardToListUser(@PathVariable String cardId) {
+		return false;
+	}
+
 }

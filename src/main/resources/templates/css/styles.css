@@ -1,0 +1,887 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    
+    background-size: cover;
+}
+
+/* Header */
+input[type="range"] {
+    width:900px;
+}
+header {
+    /*background-color: #621E45;*/
+
+    padding: 1em;
+    text-align: center;
+    display: flex;
+}
+ 
+header > div {
+    padding: 1vh;
+    /*background: blueviolet;*/
+    float: left;
+}
+
+header > div > p {
+    margin-top: 2vh;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+header > div > img {
+    margin-left: 15em;
+    width: 5em;
+    height: 4.7em;
+    
+}
+
+header > div > form {
+    width: 45em;
+    margin-right: 20em;
+    padding-top: 3vh;
+    display: flex;
+    margin-left: 1em;
+}
+
+header > div > form > div > input {
+    width: 40em;
+    height: 2.6em;
+    resize: none;
+    outline: none;
+
+    background: rgba(242, 242, 242, 0.88);
+    border: 1px solid #959595;
+    box-sizing: border-box;
+    border-radius: 0.6em;
+
+    font-size:16px;
+    font-family: "Sansation", monospace;
+    padding-left: 2vh;
+}
+
+header > div > form > div > button {
+    margin-left: 1vh;
+
+    width: 3em;
+    height: 3.1em;
+
+    background: rgba(242, 242, 242, 0.88);
+    border: 1px solid #959595;
+
+    border-radius: 0.6em;
+}
+
+/* Footer */
+
+footer {
+    background: #F5F5F5;
+    /*background: #bf00ff;*/
+    margin: 0 auto;;
+    padding: 1em 50em;
+    display: flex;
+	
+}
+
+footer > div {
+    text-align: center;
+    float: left;
+}
+
+footer > div > table {
+    width: 25em;
+}
+
+footer > div > table caption {
+    color: #000000;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+footer > div > table p {
+    color: rgb(0,0,0);
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+}
+
+main {
+    margin: 0em 0em;
+    backdrop-filter: blur(10px);
+}
+
+/* Styles for main page */
+
+.main-page .banner {
+    height: 30em;
+    padding-left: 7em;
+    padding-top: 1.5em;
+    margin: 1.5em  0em;
+    transition: 0.4s ease-out;
+}
+
+.main-page .banner .card {
+    display: flex;
+    height: 30em;
+    width: 25em;
+    border-radius: 10px;
+    box-shadow: -1rem 0 3rem #e6ede9;
+    transition: 0.4s ease-out;
+    position: center;
+    float: left ;
+}
+
+.card:not(:first-child) {
+    margin-left: 5px;
+}
+
+.card:hover {
+  transform: translateY(-20px);
+  transition: 0.4s ease-out;
+}
+
+.card:hover ~ .card {
+  position: relative;
+  left: 50px;
+  transition: 0.4s ease-out;
+}
+
+
+.nav-1 {
+    height: 3em;
+    padding: 0.5em;
+}
+
+.nav-1 > nav {
+    display: flex;
+    margin-top: 2.5em;
+}
+
+.nav-1 > nav > div {
+    float: left;
+    width: 20em;
+    text-align: center;
+}
+
+.nav-1 > nav > div > a {
+    text-decoration: none;
+    color: #1E0717;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 38px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.nav-2 {
+    height: 10em;
+    padding: 6em 0em;
+
+    white-space: nowrap;
+    display: flex;
+    align-items: top;
+}
+
+.nav-2 > nav {
+    width: 100%;
+    margin: 0em 20em;
+    
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.nav-2 > nav .grid-element {
+    margin: 1.5em 3em;
+    background: linear-gradient(90deg, #F5F5F5, #F5F5F5);
+}
+
+.grid-element div {
+    width: 15em;
+}
+
+.grid-element div a {
+    text-decoration: none;
+    /*color: #fdbdba;*/
+    color: #1E0717;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 38px;
+    font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+.nav-2 .bpr > img {
+    float: right;
+    width: 7.5em;
+    height: 9em;
+}
+
+.nav-2 .fiction > img {
+    float: right;
+    width: 9em;
+    height: 9em;
+}
+
+.nav-2 .english > img {
+    float: right;
+
+    width: 9em;
+    height: 9em;
+}
+
+/* Carusel */
+
+.carrousel_area {
+    width: 100%;
+    height: 17em;
+
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    position: relative;
+}
+
+
+
+#wrapper {
+    width: 100%;
+    max-width: 85em;
+    position: relative;
+}
+
+#carousel {
+    overflow: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+  
+#carousel::-webkit-scrollbar {
+    height: 0;
+}
+  
+#prev,
+#next {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background: white;
+    border: none;
+    padding: 8px;
+    border-radius: 50%;
+    outline: 0;
+    cursor: pointer;
+    position: absolute;
+}
+  
+#prev {
+    top: 50%;
+    left: 0;
+    transform: translate(50%, -50%);
+    display: none;
+}
+  
+#next {
+    top: 50%;
+    right: 0;
+    transform: translate(-50%, -50%);
+}
+  
+#content {
+    display: grid;
+    grid-gap: 16px;
+    grid-auto-flow: column;
+    margin: auto;
+    box-sizing: border-box;
+}
+  
+.item {
+    width: 180px;
+    height: 15em;
+}
+
+/* Styles for catalogue page */
+
+.nav-3 {
+    background-color: #F5F5F5;
+    display: flex;
+    width: 100%;
+}
+
+.nav-3 > div {
+    width: 33.33%;
+    float: left;
+    text-align: center;
+}
+
+.nav-3 > div > a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 18px;
+    line-height: 24px;
+    font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+.catalogue-area {
+    width: 100%;
+    /*height: 78.5em;*/
+    overflow: scroll;
+
+    display: grid;
+    grid-template-areas: "f c";
+    grid-template-columns: 1fr 3fr;
+    /*grid-template-columns: repeat(, 1fr);*/
+}
+
+.catalogue-area .filters {
+    grid-area: f;
+    margin: 2em 2em 0em 2em;
+    height: 40em;
+    border: 2px solid #000000;
+    backdrop-filter: blur(10px);
+    /*border-radius: 15px;*/
+    /*background-color: #ff01ff;*/
+}
+
+.catalogue-area .catalogue {
+    grid-area: c;
+    display: block;
+    float: left;
+    padding-left: 1em;
+    padding-bottom: 2em;
+}
+
+.catalogue > div {
+    background: linear-gradient(180deg, rgba(13, 0, 198, 0) 0%, #575356 77.6%);
+    box-shadow: 10px 5px 5px #363235;
+    width: 45%;
+    height: 10em;
+    display: block;
+    float: left;
+    position: relative;
+    margin-top: 16em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.catalogue > div > div > img {
+    width: 20em;
+    height: 15em;
+    margin-top: -60%;
+    padding: 0.5em 10em;
+}
+
+.catalogue > div > div > p {
+    padding: 0em 1em;
+    width: 9.8em;
+
+    /*color: #e2aeef;*/
+    color: #1f1d1c;
+    font-size: 20px;
+    line-height: 24px;
+    font-family: 'Alegreya Sans SC', sans-serif;
+
+}
+
+.catalogue > div > div > a {
+    float: right;
+    text-align: right;
+    margin-right: 1em;
+
+    text-decoration: none;
+    color: #adb5bd;
+    font-size: 14px;
+    line-height: 24px;
+    font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+
+.filters > div {
+    padding: 1em 1em 0em 1em;
+}
+
+/* Кнопка выпадающего списка */
+.dropbtn {
+    background-color: #F5F5F5;
+    color: #1E0717;
+ 
+    border: none;
+    cursor: pointer;
+    width: 15em;
+    height: 1.5em;
+    border-radius: 5px;
+
+    font-size: 20px;
+    line-height: 24px;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+}
+  
+  /* Кнопка выпадающего меню при наведении и фокусировке */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: rgb(29, 7, 22);
+    color: #F5F5F5;
+}
+  
+  /* Контейнер <div> - необходим для размещения выпадающего содержимого */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+  
+  /* Выпадающее содержимое (скрыто по умолчанию) */
+  .dropdown-content {
+    display: none;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.4);
+    z-index: 1;
+}
+
+  /* Ссылки внутри выпадающего списка */
+.dropdown-content div {
+    color: #000000;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+
+    font-size: 17px;
+    line-height: 20px;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    font-weight: 600;
+}
+  
+  /* Изменение цвета выпадающих ссылок при наведении курсора */
+  .dropdown-content div:hover {background-color: rgb(29, 7, 22, 0.6)}
+  
+  /* Показать выпадающее меню (используйте JS, чтобы добавить этот класс .dropdown-content содержимого, когда пользователь нажимает на кнопку выпадающего списка) */
+  .show {display:block;}
+  /*
+.filters > div > p {
+    font-size: 20px;
+    line-height: 24px;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    margin-bottom: 0.5em;
+    margin-left: 1.5em;
+}
+
+.filters > div > div label {
+    font-size: 18px;
+    line-height: 22px;
+    font-family: 'Alegreya Sans SC', sans-serif;
+}*/
+
+
+.custom-checkbox {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.custom-checkbox + label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+}
+
+.custom-checkbox + label::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1.5px solid #adb5bd;
+    border-radius: 50%;
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+}
+
+.custom-checkbox:checked+label::before {
+    border-color: #adb5bd;
+    background-color: #1E0717;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+}
+
+.button-up {
+    display: none;
+    width: 4.5em;
+    height: 4.5em;
+    background: transparent;
+    border: none;
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+}
+
+
+
+.button-up .fa {
+    color: rgb(0,0,0);
+}
+
+/* Interesting dl page*/
+.dollars {
+    width: 100%;
+    overflow: scroll;
+}
+
+.dl-area {
+    width: 100%;
+    height: 78.5em;
+	font-size: 20px;
+    overflow: scroll;
+}
+
+.dl-area h1 {
+    margin: 1em 0em;
+	font-size: 40px;
+	line-height: 50px;
+}
+
+.dl-area h2 {
+    color: #9c5f5f;
+    font-size: 34px;
+	line-height: 40px;
+}
+.dl-area h3 {
+    color: #800000;
+    font-size: 28px;
+	line-height: 30px;
+}
+
+.dl-area .fact {
+    display: block;
+    float: left;
+    padding-left: 0.3em;
+}
+
+.dl-area .fact > div {
+    width: 18em;
+    height: 25em;
+    float: left;
+    margin: 2.5em;
+
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+    box-shadow: 10px 5px 5px #1E0717;
+
+    font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+.dl-area .fact > div .fact-overlay {
+    width: 18em;
+    height: 15em;
+    margin-bottom: 2em;
+  
+    transform: translateY(0%);
+    transition: .2s ease-in-out;
+}
+
+.dl-area .fact > div:hover .fact-overlay {
+    transform: translateY(-100%);
+}
+
+.dl-area .fact > div .fact-overlay > .fact-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 1.5em;
+    border-radius: 40px 0 50px 0;    
+    border-bottom: 1px solid #F5F5F5;
+    background: rgb(226, 174, 239, 0.5);
+    backdrop-filter: blur(8px);
+    box-shadow: inset 0.3px 0.3px 4px 4px #F5F5F5;
+    transform: translateY(-100%);
+    transition: .2s ease-in-out;
+    font-size: 18px;
+    color: #44011D;
+}
+
+.dl-area .fact > div:hover .fact-header {
+    
+}
+
+.dl-area .fact .fact-description {
+    margin-top: -5em;
+    height: 100%;
+    padding: 1em;
+    background: rgb(226, 174, 239, 0.3);
+    backdrop-filter: blur(8px);
+
+    font-size: 22px;
+    color: #000000;
+}
+
+/* Best of the best page */
+
+.class-top-banks {
+    margin-top: 1.5em;
+    height: 78.5em;
+    width: 100%;
+    overflow: scroll;
+}
+
+.class-top-banks > div {
+    margin: 1.5em;
+    width: 30%;
+    height: 15em;
+    display: block;
+    float: left;
+}
+
+.class-top-banks > div > img {
+    height: 100%;
+    width: 35%;
+}
+
+.class-top-banks > div > div {
+    float: right;
+    height: 86.5%;
+    width: 57.5%;
+    padding: 1em;
+    display: block;
+}
+
+.class-top-banks > div > div > p:first-child {
+    color: #756c70;
+    font-size: 28px;
+    line-height: 36px;
+    font-weight: 500;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    text-align: left;
+}
+
+.class-top-banks > div > div > p {
+    color: #c5a7cc;
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 500;
+    font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+.class-top-banks > div > div > a {
+    text-decoration: none;
+    color: #a9b5c2;
+
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 500;
+    font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+/* Item page */
+.item-page {
+    padding: 4em;
+}
+
+.item-page > img {
+    height: 30em;
+    width: 20em;
+}
+
+.item-page > div {
+    float: right;
+    height: 30em;
+    width: 64em;
+}
+
+.item-page > div > p {
+    color: #1E0717;
+    text-shadow: 0 0 26px #fafafa, 0 0 7px #fca1c2, 0 0 55px #964154cc, 0 0 79px #44011D, 0 0 86px #1E0717;
+    font-size: 32px;
+    line-height: 38px;
+    font-weight: 600;
+    font-family: 'Alegreya Sans SC', sans-serif;
+    margin-left: 0.6em;
+}
+
+.item-page > div > section {
+    margin: 1.5em 1em 0em 1em;
+}
+
+.first-section {
+    color: #1E0717;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 600;
+    font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+.second-section {
+    padding-top: 1.5em;
+    color: #1E0717;
+    font-size: 16px;
+    line-height: 20px;
+    font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+/* Add item page */ 
+.add-item-page {
+    padding: 1em 2em 2em 2em;
+}
+
+.add-item-page > form {
+}
+
+.add-item-page > form > div {
+    display: flex;
+    padding: 0.5em;
+    font-size: 18px;
+    line-height: 20px;
+    font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+.add-item-page > form > div > input {
+    width: 20em;
+    height: 2em;
+    resize: none;
+    outline: none;
+
+    background: rgba(242, 242, 242, 0.88);
+    border: 1px solid #959595;
+    box-sizing: border-box;
+    border-radius: 0.6em;
+
+    display: block;
+    float: left;
+
+    font-size:16px;
+    font-family: "Sansation", monospace;
+    padding-left: 1.5vh;
+    margin-left: 1em;
+}
+
+.add-item-page > form > div > label {
+    color: #1E0717;
+    display: block;
+    float: left;
+    width: 15em;
+    height: 1.6em;
+    padding-top: 0.1em;
+    text-align: right;
+    font-weight: 600;
+}
+
+.add-item-page > form > div > div {
+    margin-left: 0.5em;
+    color: #b5b5b5;
+    font-weight: 500;
+}
+
+.add-item-page > form > div > textarea {
+    width: 40em;
+    height: 10em;
+    resize: none;
+    outline: none;
+
+    background: rgba(242, 242, 242, 0.88);
+    border: 1px solid #959595;
+    box-sizing: border-box;
+    border-radius: 0.6em;
+
+    display: block;
+    float: left;
+
+    font-size:16px;
+    font-family: "Sansation", monospace;
+    padding: 1.5vh;
+    margin-left: 1em;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+/* Style the Image Used to Trigger the Modal */
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 1000px;
+}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 1000px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}

@@ -85,12 +85,42 @@
       console.log(data);
       let table = "<table border ='1'>";
       for(i = 0; i < data.length; i++) {
-        table = table + "<tr><td>" + data[i].name + "</td><td><img src=" + data[i].icon + "></td><td> <div><a href=" + data[i].urlProduct + ">>Ссылка на продукт</a></div></td></tr>";
+        table = table + "<tr><td>" + data[i].name + "</td><td><img src=" + data[i].icon + "></td><td> <div><a href=" + data[i].urlProduct + ">>Ссылка на продукт</a></div></td>" +
+            "<td> <div> <button onclick='addToUser(\"" +data[i].id+"\")'>Добавить</button> </div></td>"  + "</tr>";
       }
       table = table + "</table>";
       $("#testw").html(table);
     })
   }
+
+  function addToUser(id) {
+    var url = 'http://localhost:8093/authorization/info';
+    $.get(url, function(data) {
+      if (data == "NO") {
+        alert("Зарегистрируйтесь");
+      } else {
+        var urlLoan = 'http://localhost:8093/product/loan/addloan/' + id;
+        $.get(urlLoan, function(data) {
+          alert("Добавлено");
+        });
+      }
+    });
+  }
+
+  $(document).ready(function() {
+    console.log("Zzzzwww");
+    var url = 'http://localhost:8093/authorization/info';
+    $.get(url, function(data) {
+      console.log(data);
+      if (data == "NO") {
+        $("#text").text("Вход");
+        $("#text").attr("href", '../html/login.html');
+      } else {
+        $("#text").text(data);
+        $("#text").attr("href", '../html/profile.html');
+      }
+    });
+  });
 </script>
 <body>
 <header>
@@ -103,11 +133,11 @@
   <div>
     <form>
       <div>
-        <input placeholder="Поиск..." size="35" type="text"/>
+        <input placeholder="Поиск..." size="35" type="text" style="display: none"/>
       </div>
       <div>
-        <button>
-          <i class="fa fa-search fa-2x"></i>
+        <button style="margin-left: 600px;">
+          <a id="text" onload="isAut()" href="../html/catalogue -LOAN.html"> </a>
         </button>
       </div>
 

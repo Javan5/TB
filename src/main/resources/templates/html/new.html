@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<head>
+    <title>ProBanks - Новости</title>
+    <link href="../css/styles.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../font/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:ital,wght@1,500&family=Josefin+Sans&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+</head>
+<script type="text/javascript">
+    $(document).ready(function() {
+        console.log("Шалом");
+        var text_label = $('#text');
+        $.get('http://localhost:8090/news/getall', function(data) {
+            console.log(data);
+            //const div = document.getElementsByClassName("catalogue_area");
+            //text_label.text(data);
+            //data=encodeURIComponent(data);
+            let econ = "";
+            let police = "";
+            let sci = "";
+            for (i=0; i<data.length; i++) {
+                let card = "<div>" + "<img src=" + data[i].icon +" "+ "width="+100+"% height="+100+"%><div class=fact-overlay"  + "><div class=fact-header" +"><h3>Россия</h3></div>"
+                    + "<p class = fact-description"  + ">" + data[i].text + "<a href=" + data[i].url +">Подробнее</a></p></div></div>";
+                if (data[i].typeNews == "ECONOMY") {
+                    econ = econ + card;
+                } else if (data[i].typeNews == "POLICE") {
+                    police = police + card;
+                } else {
+                    sci = sci + card;
+                }
+            }
+            $("#economi").html(econ);
+            $("#police").html(police);
+            $("#sci").html(sci);
+
+        })
+    });
+    function qqq(data, news) {
+       if (data.typeNews == "ECONOMY") {
+           $("#economi").html(news);
+       } else if (data.typeNews == "POLICE") {
+           $("#police").html(news);
+       } else {
+            $("#sci").html(news);
+       }
+    }
+</script>
+<body>
+    <header>
+        <div>
+            <img src="../pictures/pngwing.com (1).png" alt="логотип"/>
+        </div>
+        <div>
+            <p>ProBanks</p>
+        </div>
+        <div>
+            <form>
+                <div>
+                    <input placeholder="Поиск..." size="35" type="text"/>
+                </div>
+                <div>
+                    <button>
+                        <i class="fa fa-search fa-2x"></i>
+                    </button>
+                </div>
+                
+            </form>
+        </div>
+    </header>
+
+    <main style="margin-top: 1.5em;">
+        <nav class="nav-3">
+			<div>
+                <a href="../html/index.html">Главная</a>
+            </div>
+            <div>
+                <a href="../html/catalogue.html">Вклады</a>
+            </div>
+			<div>
+                <a href="../html/catalogue -LOAN.html">Кредиты</a>
+            </div>
+            <div>
+                <a href="../html/catalogue _IP.html">Ипотека</a>
+            </div>
+			<div>
+                <a href="../html/catalogue _Card.html">Карты</a>
+            </div>
+        </nav>
+
+        <div class="dl-area">
+            <div style="width: 100%; text-align: center;">
+                <h1>СРОЧНЫЕ НОВОСТИ! </h1>
+            </div>
+
+            <div style="width: 100%; text-align: center;">
+                <h2>Экономика</h2>
+            </div>
+
+            <div class="fact" style="width: 100%;" id="economi">
+
+
+            </div>
+
+            <div style="width: 100%; text-align: center;">
+                <h2>Политика</h2>
+            </div>
+
+            <div class="fact" style="width: 100%;" id="police">
+
+            </div>
+
+			<div style="width: 100%; text-align: center;">
+                <h2>Общество</h2>
+            </div>
+			<div class="fact" style="width: 100%;" id="sci">
+
+
+
+
+      </div>
+
+    </main>
+
+        <footer>
+        <div>
+            <table>
+                <caption>Наши контакты:</caption>
+                <tr>
+                    <td>
+                        <p>ВК</p>
+                    </td>
+                    <td>
+                        <a href="https://vk.com/" target="_blank">vk.ru</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Госуслуги</p>
+                    </td>
+                    <td>
+                        <a href="https://www.gosuslugi.ru/" target="_blank">gosuslugi.ru</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Rutube</p>
+                    </td>
+                    <td>
+                        <a href="https://rutube.ru/" target="_blank">rutube.ru</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+    </footer>
+</body>
+<script src="../js/run_line.js"></script>
+<style>
+    .dl-area .fact > div .fact-overlay > .fact-header {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 1.5em;
+        border-radius: 40px 0 50px 0;
+        border-bottom: 1px solid #F5F5F5;
+        background: rgb(226, 174, 239, 0.5);
+        backdrop-filter: blur(8px);
+        box-shadow: inset 0.3px 0.3px 4px 4px #F5F5F5;
+        transform: translateY(-100%);
+        transition: .2s ease-in-out;
+        font-size: 18px;
+        color: #44011D;
+    }
+</style>
+</html>

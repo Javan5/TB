@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<head>
+    <title>ProBanks - Ипотека</title>
+    <link href="../css/styles.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../font/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:ital,wght@1,500&family=Josefin+Sans&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="../js/up.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+</head>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        console.log("Шалом");
+        var text_label = $('#text');
+        $.get('http://localhost:8090/product/mortgage/getall', function(data) {
+            console.log(data);
+            //const div = document.getElementsByClassName("catalogue_area");
+            //text_label.text(data);
+            //data=encodeURIComponent(data);
+            let card = "";
+            for (i=0; i<data.length; i++) {
+                card = card + "<div>" + "<div><img src=" + data[i].icon + "></div><div>";
+                card=card+"<p style=\"text-align: center; height: 2.5em;\">" + data[i].name + "</p> <p> До " + data[i].sum + " млн.</p> <p> От "
+                    + data[i].rate + "% </p><a  href=" + data[i].urlProduct+"> Подробнее></a></div> </div>"
+            }
+            $("#catalogue_area").html(card);
+        })
+    });
+</script>
+
+<body>
+    <header>
+        <div>
+            <img src="../pictures/pngwing.com (1).png" alt="логотип"/>
+        </div>
+        <div>
+            <p>ProBanks</p>
+        </div>
+        <div>
+            <form>
+                <div>
+                    <input placeholder="Поиск..." size="35" type="text"/>
+                </div>
+                <div>
+                    <button>
+                        <i class="fa fa-search fa-2x"></i>
+                    </button>
+                </div>
+                
+            </form>
+        </div>
+    </header>
+
+    <main style="margin-top: 1.5em;">
+        <nav class="nav-3">
+		     <div>
+                <a href="../html/index.html">Главная</a>
+            </div>
+            <div>
+                <a href="../html/catalogue.html">Вклады</a>
+            </div>
+			<div>
+                <a href="../html/catalogue -LOAN.html">Кредиты</a>
+            </div>
+            <div>
+                <a href="../html/catalogue _IP.html">Ипотека</a>
+            </div>
+			<div>
+                <a href="../html/catalogue _Card.html">Карты</a>
+            </div>				
+        </nav>
+        <div class="catalogue-area">
+            <div class="filters">
+                <div class="dropdown">
+                    <button onclick="dropFilterGenres()" class="dropbtn">Банк: </button>
+                    <div id="myDropdownGenres" class="dropdown-content">
+                        <div>
+                            <input type="checkbox" class="custom-checkbox" id="sber" name="sber">
+                            <label for="sber">Сбер</label>
+                        </div>
+                        
+                        <div>
+                            <input type="checkbox" class="custom-checkbox" id="alfa" name="alfa">
+                            <label for="alfa">Альфабанк</label>
+                        </div>
+                        
+                        <div>
+                            <input type="checkbox" class="custom-checkbox" id="vtb" name="vtb">
+                            <label for="vtb">ВТБ</label>
+                        </div>
+                        
+                        <div>
+                            <input type="checkbox" class="custom-checkbox" id="mcb" name="mcb">
+                            <label for="mcb">МКБ</label>
+                        </div>
+                        
+                        <div>
+                            <input type="checkbox" class="custom-checkbox" id="tinkov" name="tinkov">
+                            <label for="tinkov">Тинькофф</label>
+                        </div>
+                        
+                        <div>
+                            <input type="checkbox" class="custom-checkbox" id="renessans" name="renessans">
+                            <label for="renessans">Ренессанс</label>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div style="padding-top: 1em;">
+                    <div class="dropdown">
+                        <button onclick="dropFilterPublish()" class="dropbtn">Срок ипотеки до: </button>
+                        <div id="myDropdownPublish" class="dropdown-content">
+ 							<p><input type="range" min="1" max="20" onchange="document.getElementById('rangeValue').innerHTML = this.value;" list="rangeList"> <span id="rangeValue">5</span> <span> лет</span></p>
+							<datalist id="rangeList">
+							<option value="4" label="4">
+							<option value="8" label="8">
+							<option value="12" label="12">
+							<option value="16" label="16">
+							<option value="20" label="20">
+							</datalist>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="catalogue" id="catalogue_area">
+                
+            </div>
+        </div>
+        
+        
+
+    </main>
+
+    <button class="button-up" onclick="topFunction()" id="myBtn">
+        <i class="fa fa-angle-double-up fa-5x"></i>
+    </button>
+
+    <footer>
+        <div>
+            <table>
+                <caption>Наши контакты:</caption>
+                <tr>
+                    <td>
+                        <p>ВК</p>
+                    </td>
+                    <td>
+                        <a href="https://vk.com/" target="_blank">vk.ru</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Госуслуги</p>
+                    </td>
+                    <td>
+                        <a href="https://www.gosuslugi.ru/" target="_blank">gosuslugi.ru</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Rutube</p>
+                    </td>
+                    <td>
+                        <a href="https://rutube.ru/" target="_blank">rutube.ru</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+    </footer>
+</body>
+<script src="../js/drop_menu.js"></script>
+</html>

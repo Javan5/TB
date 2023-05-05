@@ -8,4 +8,7 @@ public interface BuilderCard {
 
 	public List<CardDto> getCardByLimitAndPeriod(int limit, int period);
 
+	boolean addCard(String id);
+
+
 }

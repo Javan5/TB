@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ProBanks - Добавить продукт</title>
+    <link href="../css/styles.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../font/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:ital,wght@1,500&family=Josefin+Sans&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+</head>
+<script>
+    function validateForm() {
+        var name = document.forms["addItemForm"]["furl"].value;
+        var password = document.forms["addItemForm"]["ftitle"].value;
+        var re=new RegExp('^[a-zA-Z0-9]+$');
+        if(!re.test(name) || !re.test(password)) {
+            alert('Введите латинские буквы и цифры в логине и пароле');
+            return;
+        }
+        var createDepositDto = JSON.stringify({
+            name,
+            password
+        });
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8093/authorization/add",
+            data: createDepositDto,
+            contentType: "application/json",
+            dataType: "json",
+            success: function () {
+                //alert("Data saved");
+            },
+            error: function (data) {
+                //alert("Data can't get");
+            }
+        }).done(function (data) {
+            document.location.href = "../html/index.html";
+        }).fail(function(jqXHR, textStatus, error){
+            alert(error);
+            alert(textStatus);
+
+            document.location.href = "http://www.site.ru";
+        });
+        document.location.href = "../html/index.html";
+    }
+</script>
+<body>
+    <header>
+        <div>
+            <img src="../pictures/pngwing.com (1).png" alt="логотип"/>
+        </div>
+        <div>
+            <p>ProBanks</p>
+        </div>
+        <div>
+            <form>
+
+                
+            </form>
+        </div>
+    </header>
+
+    <main style="margin-top: 1.5em;">
+        <nav class="nav-3">
+            <div>
+                <a href="../html/index.html">Главная</a>
+            </div>
+            <div>
+                <a href="../html/catalogue -LOAN.html">Кредиты</a>
+            </div>
+            <div>
+                <a href="../html/catalogue _IP.html">Ипотека</a>
+            </div>
+            <div>
+                <a href="../html/catalogue _Card.html">Карты</a>
+            </div>
+        </nav>
+        <div class="add-item-page">
+            <form name="addItemForm">
+                <div>
+                    <label>Логин</label>
+                    <input name="furl" type="text" placeholder="Логин" size="35" type="text" required/>
+                </div>
+                <div>
+                    <label>Пароль</label>
+                    <input name="ftitle" type="text" placeholder="Пароль" size="35" type="text" required/>
+                </div>
+                <div>
+                    <button type="submit" onclick='validateForm()'>Отправить</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div>
+            <table>
+                <caption>Наши контакты:</caption>
+                <tr>
+                    <td>
+                        <p>ВК</p>
+                    </td>
+                    <td>
+                        <a href="https://vk.com/" target="_blank">vk.ru</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Госуслуги</p>
+                    </td>
+                    <td>
+                        <a href="https://www.gosuslugi.ru/" target="_blank">gosuslugi.ru</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Rutube</p>
+                    </td>
+                    <td>
+                        <a href="https://rutube.ru/" target="_blank">rutube.ru</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+    </footer></body>
+</html>

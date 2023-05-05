@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>ProBanks</title>
+    <link href="../css/styles.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../font/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:ital,wght@1,500&family=Josefin+Sans&family=Rubik:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+</head>
+<script type="text/javascript">
+    $(document).ready(function() {
+        console.log("Шалом");
+        var text_label = $('#text');
+        $.get('http://localhost:8090/currency/getstr', function(data) {
+            console.log(data);
+            const div = document.getElementsByClassName("dollars");
+            text_label.text(data);
+        })
+    });
+    $(document).ready(function() {
+        console.log("Zzzzwww");
+        var url = 'http://localhost:8093/authorization/info';
+        $.get(url, function(data) {
+            console.log(data);
+            if (data == "NO") {
+                $("#texttt").text("Вход");
+                $("#texttt").attr("href", '../html/login.html');
+            } else {
+                $("#texttt").text(data);
+                $("#texttt").attr("href", '../html/profile.html');
+            }
+        });
+    });
+</script>
+<body>
+    <header>
+        <div>
+            <img src="../pictures/pngwing.com (1).png" alt="логотип"/>
+        </div>
+        <div>
+            <p>ProBanks</p>
+        </div>
+        <div>
+            <form>
+
+                <div>
+                    <button style="margin-left: 600px;">
+                        <a id="texttt" onload="isAut()" href="../html/catalogue -LOAN.html"> </a>
+                    </button>
+                </div>
+                
+            </form>
+        </div>
+    </header>
+
+    <main class="main-page" onload="getCurrency()">
+	
+		<div class="dollars" onload="f()">
+		<div style="width: 100%; text-align: center; ">
+                <h1 id="text"> </h1>
+            </div>
+		</div >
+
+        <div class="banner">
+			<div class="card"  style="background-size: cover;">
+          <div>
+              <a href="builder-Card.html"> <img src="../pictures/cardB.png" alt=""></a>
+          </div>
+      </div>
+            <div class="card" href="./catalogue -LOAN.html" style=" background-size: cover;">
+                <a href="builder-Loan.html"> <img src="../pictures/loanB.png" alt=""></a>
+            </div>
+            <div class="card" style=" background-size: cover;">
+                <div>
+                    <a  href="builder-Mortgage.html"> <img src="../pictures/ipotekaB.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-1">
+            <nav>
+                <div style="margin-left: 10em;">
+
+                </div>
+                <div style="margin-left: 10em;">
+                    <a href="./catalogue -LOAN.html">Кредиты</a>
+                </div>
+				<div style="margin-left: 10em;">
+                    <a href="./catalogue _IP.html">Ипотека</a>
+                </div>
+				<div style="margin-left: 10em;">
+				<a href="./catalogue _Card.html">Карты</a>
+                </div>
+				
+            </nav>
+        </div>
+
+        <div class="nav-2">
+            <nav>
+                <div class="grid-element bpr">
+                    <img src="../pictures/pngwing.com (4).png" alt="комикс" style="margin-right: 1em"/>
+                    <div style="margin-top: 1em; ">
+                        <a href="./new.html">
+                            <p style="margin-left: 1em;">Новости</p>
+                            <p style="margin-left: 2em;">Расследования</p>
+                            <p style="margin-left: 3em;">Проблемы</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="grid-element english">
+                    <img src="../pictures/pngwing.com (5).png" alt="иностранная" style="margin-right: 0em"/>
+                    <div style="margin-top: 2.15em; ">
+                        <a href="./dollars.html">
+                            <p style="margin-left: 0.5em;">Курсы</p>
+                            <p style="margin-left: 1.5em;">Валют</p>
+                        </a>
+                    </div>
+                </div>
+            </nav>   
+        </div>
+
+    </main>
+
+    <footer>
+        <div>
+            <table>
+                <caption>Наши контакты:</caption>
+                <tr>
+                    <td>
+                        <p>ВК</p>
+                    </td>
+                    <td>
+                        <a href="https://vk.com/" target="_blank">vk.ru</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Госуслуги</p>
+                    </td>
+                    <td>
+                        <a href="https://www.gosuslugi.ru/" target="_blank">gosuslugi.ru</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Rutube</p>
+                    </td>
+                    <td>
+                        <a href="https://rutube.ru/" target="_blank">rutube.ru</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+    </footer>
+</body>
+<script src="../js/carousel.js"></script>
+<script src="../js/run_line.js"></script>
+<script src="../js/ajaxCurrencyOnePage.js"></script>
+</html>

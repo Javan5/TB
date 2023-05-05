@@ -39,4 +39,14 @@ public class LoanController {
 	public List<LoanDto> getCardsByParam(@PathVariable int sum, @PathVariable int period, @PathVariable int type) {
 		return builderLoan.getCardByLimitAndPeriod(sum, period, TypeLoan.values()[type]);
 	}
+
+	@GetMapping("/addloan/{loanId}")
+	public boolean addLoanToListUser(@PathVariable String loanId) {
+		return builderLoan.addNewLoanUser(loanId);
+	}
+
+	@GetMapping("/getloans")
+	public List<LoanDto> getLoanForUser() {
+		return builderLoan.getLoanForUser();
+	}
 }
